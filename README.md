@@ -56,7 +56,7 @@ Pre-requisites:
 --------------
 **On Linux hosts it is mandatory that the user (using which you are going to run below given commands) of your host machine has 1000:1000 as UID and GID too, otherwise you’ll end up with a non-working PIM due to permission issues.**
 
-There are two types of installations one is icecat_demo_dev (with demo files) and other is minimal (without demo files)
+There are two types of installations one is `icecat_demo_dev` (with demo files) and other is `minimal` (without demo files)
 
 Below are the common steps for both installations
 -----------------------------
@@ -81,6 +81,7 @@ to
 to
 `index_hosts:                          'elastic:changeme@elasticsearch:9200'`
 
+continue with below given commands
 ```
 cp  app/config/parameters.yml.dist  app/config/parameters.yml
 docker-compose up -d
@@ -110,12 +111,12 @@ sh ./bin/docker/pim-initialize.sh
 exec inside the fpm:php container with
 ----
 ```
-docker exec -it 'container_id' bash
+docker exec -it container_id bash
 ```
 run below command inside container
 ------
 ```
-php bin/console pim:user:create --admin -e prod -n -- admin admin test@example.com John Doe en_US`
+php bin/console pim:user:create --admin -e prod -n -- admin admin test@example.com John Doe en_US
 ```
 
 Open browser and access `localhost:8080`
