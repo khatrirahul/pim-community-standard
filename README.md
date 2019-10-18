@@ -48,15 +48,18 @@ To upgrade Akeneo PIM to a newer version, please follow:
 https://docs.akeneo.com/master/migrate_pim/index.html
 
 
-##QUICK SETUP
+QUICK SETUP
+-----------
 **Note**:  These steps will setup Akeneo PIM in `prod` environment.
-###Pre-requisites: 
-#####On Linux hosts it is mandatory that the user (using which you are going to run below given commands) of your host machine has 1000:1000 as UID and GID too, otherwise you’ll end up with a non-working PIM due to permission issues.
 
-####There are two types of installations one is icecat_demo_dev (with demo files) and other is minimal (without demo files)
+Pre-requisites: 
+--------------
+**On Linux hosts it is mandatory that the user (using which you are going to run below given commands) of your host machine has 1000:1000 as UID and GID too, otherwise you’ll end up with a non-working PIM due to permission issues.**
 
-#####These are the common steps for both installations
+There are two types of installations one is icecat_demo_dev (with demo files) and other is minimal (without demo files)
 
+Below are the common steps for both installations
+-----------------------------
 Run below given commands:
 ```
 mkdir akeneo
@@ -67,7 +70,9 @@ cd pim-community-standard/
 cp .env.dist .env
 vim app/config/parameters.yml.dist
 ```
+
 Change below given two parameters only and save the file:
+
 `database_host:                        localhost`
 to
 `database_host:                        mysql`
@@ -81,18 +86,18 @@ cp  app/config/parameters.yml.dist  app/config/parameters.yml
 docker-compose up -d
 sh ./bin/docker/pim-dependencies.sh
 ```
-#####For full installation with demo files
-
+For full installation (with demo files)
+------
 ```
 sh ./bin/docker/pim-initialize.sh
 ```
-#####For minimal installation without demo files
-
+For minimal installation (without demo files)
+------
 ```
 vim app/config/pim_parameters.yml  
 ```
-#####Change the following parameters:
-
+Change the following parameters:
+-----
 
 		    installer_data:       PimInstallerBundle:icecat_demo_dev
 			 
@@ -102,16 +107,19 @@ vim app/config/pim_parameters.yml
 ```
 sh ./bin/docker/pim-initialize.sh
 ```
-#####exec inside the fpm:php container with 
+exec inside the fpm:php container with
+----
 ```
 docker exec -it 'container_id' bash
 ```
-#####run below command inside container
+run below command inside container
+------
 ```
 php bin/console pim:user:create --admin -e prod -n -- admin admin test@example.com John Doe en_US`
 ```
 
 Open browser and access `localhost:8080`
+----
 ```
 user: admin
 password: admin
